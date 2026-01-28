@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atmos IPTV - Entretenimento Sem Limites</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        .float-animation { animation: float 3s ease-in-out infinite; }
+        
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .slide-up { animation: slideUp 0.6s ease-out forwards; }
+        
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(239, 68, 68, 0.5); }
+            50% { box-shadow: 0 0 40px rgba(239, 68, 68, 0.8); }
+        }
+        .pulse-glow { animation: pulse-glow 2s ease-in-out infinite; }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #1a1a1a 0%, #000000 100%);
+        }
+        
+        .gradient-red {
+            background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
+        }
+        
+        .chat-bubble {
+            max-width: 80%;
+            word-wrap: break-word;
+        }
+
+        .accent-line {
+            background: linear-gradient(90deg, transparent, #ef4444, transparent);
+            height: 2px;
+        }
+    </style>
+</head>
+<body class="bg-black">
+    <!-- Header -->
+    <header class="bg-black border-b border-gray-800 text-white py-4 fixed w-full top-0 z-50 shadow-xl">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <h1 class="text-2xl md:text-3xl font-bold flex items-center gap-2">
+                <span class="text-red-600">⚡</span> 
+                <span>ATMOS <span class="text-red-600">IPTV</span></span>
+            </h1>
+            <button onclick="scrollToPlans()" class="bg-red-600 text-white px-6 py-2 rounded-lg font-semibold hover:bg-red-700 transition transform hover:scale-105">
+                Ver Planos
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="gradient-bg text-white pt-32 pb-20 px-4 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute top-0 left-0 w-96 h-96 bg-red-600 rounded-full filter blur-3xl"></div>
+            <div class="absolute bottom-0 right-0 w-96 h-96 bg-red-600 rounded-full filter blur-3xl"></div>
+        </div>
+        <div class="container mx-auto text-center relative z-10">
+            <div class="slide-up">
+                <h2 class="text-5xl md:text-7xl font-bold mb-6">
+                    Entretenimento
+                    <span class="text-red-600">Sem Limites</span>
+                </h2>
+                <div class="accent-line max-w-md mx-auto mb-6"></div>
+                <p class="text-xl md:text-2xl mb-8 text-gray-300">
+                    Milhares de canais, filmes e séries em qualidade 4K
+                </p>
+                <div class="flex justify-center gap-4 flex-wrap">
+                    <button onclick="scrollToPlans()" class="gradient-red px-8 py-4 rounded-lg font-bold text-lg hover:shadow-2xl transition transform hover:scale-105 pulse-glow">
+                        Assinar Agora
+                    </button>
+                    <button onclick="openChat()" class="bg-transparent border-2 border-red-600 px-8 py-4 rounded-lg font-bold text-lg hover:bg-red-600 transition">
+                        Falar no WhatsApp
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section class="py-20 px-4 bg-gray-900">
+        <div class="container mx-auto">
+            <h3 class="text-4xl md:text-5xl font-bold text-center mb-4 text-white">Por que escolher a <span class="text-red-600">Atmos IPTV?</span></h3>
+            <div class="accent-line max-w-md mx-auto mb-16"></div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-black border border-gray-800 p-8 rounded-xl shadow-2xl hover:border-red-600 transition text-center group">
+                    <div class="text-5xl mb-4 group-hover:scale-110 transition">🎬</div>
+                    <h4 class="text-2xl font-bold mb-4 text-white">+15.000 Canais</h4>
+                    <p class="text-gray-400">Canais do Brasil e do mundo em HD, Full HD e 4K</p>
+                </div>
+                <div class="bg-black border border-gray-800 p-8 rounded-xl shadow-2xl hover:border-red-600 transition text-center group">
+                    <div class="text-5xl mb-4 group-hover:scale-110 transition">⚡</div>
+                    <h4 class="text-2xl font-bold mb-4 text-white">Zero Travamentos</h4>
+                    <p class="text-gray-400">Servidores de alta performance sem buffering</p>
+                </div>
+                <div class="bg-black border border-gray-800 p-8 rounded-xl shadow-2xl hover:border-red-600 transition text-center group">
+                    <div class="text-5xl mb-4 group-hover:scale-110 transition">📱</div>
+                    <h4 class="text-2xl font-bold mb-4 text-white">Multi-Dispositivos</h4>
+                    <p class="text-gray-400">TV Box, Smart TV, celular, tablet e PC</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="py-16 px-4 bg-black border-y border-gray-800">
+        <div class="container mx-auto">
+            <div class="grid md:grid-cols-4 gap-8 text-center">
+                <div>
+                    <div class="text-4xl md:text-5xl font-bold text-red-600 mb-2">+15K</div>
+                    <p class="text-gray-400 font-semibold">Canais Disponíveis</p>
+                </div>
+                <div>
+                    <div class="text-4xl md:text-5xl font-bold text-red-600 mb-2">99.9%</div>
+                    <p class="text-gray-400 font-semibold">Uptime Garantido</p>
+                </div>
+                <div>
+                    <div class="text-4xl md:text-5xl font-bold text-red-600 mb-2">24/7</div>
+                    <p class="text-gray-400 font-semibold">Suporte Online</p>
+                </div>
+                <div>
+                    <div class="text-4xl md:text-5xl font-bold text-red-600 mb-2">4K</div>
+                    <p class="text-gray-400 font-semibold">Qualidade Máxima</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Plans -->
+    <section id="plans" class="py-20 px-4 bg-gray-900">
+        <div class="container mx-auto">
+            <h3 class="text-4xl md:text-5xl font-bold text-center mb-4 text-white">Escolha seu <span class="text-red-600">Plano</span></h3>
+            <div class="accent-line max-w-md mx-auto mb-16"></div>
+            <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <!-- Plano Mensal -->
+                <div class="bg-black border-2 border-gray-800 p-8 rounded-xl shadow-2xl hover:border-red-600 transition transform hover:scale-105">
+                    <h4 class="text-2xl font-bold mb-4 text-white">Mensal</h4>
+                    <div class="text-5xl font-bold text-red-600 mb-6">R$ 50,00<span class="text-lg text-gray-400">/mês</span></div>
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-center text-gray-300">
+                            <span class="text-red-600 mr-2">✓</span> +15.000 canais
+                        </li>
+                        <li class="flex items-center text-gray-300">
+                            <span class="text-red-600 mr-2">✓</span> Qualidade HD/Full HD
+                        </li>
+                        <li class="flex items-center text-gray-300">
+                            <span class="text-red-600 mr-2">✓</span> 1 tela simultânea
+                        </li>
+                        <li class="flex items-center text-gray-300">
+                            <span class="text-red-600 mr-2">✓</span> Suporte 24/7
+                        </li>
+                        <li class="flex items-center text-gray-300">
+                            <span class="text-red-600 mr-2">✓</span> Filmes e séries
+                        </li>
+                    </ul>
+                    <button onclick="selectPlan('Mensal - R$ 50,00')" class="w-full gradient-red text-white py-3 rounded-lg font-bold hover:shadow-2xl transition">
+                        Assinar Agora
+                    </button>
+                </div>
+
+                <!-- Plano Trimestral -->
+                <div class="gradient-red p-8 rounded-xl shadow-2xl transform scale-105 border-2 border-red-400 relative">
+                    <div class="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                        <div class="bg-yellow-400 text-black text-sm font-bold px-6 py-2 rounded-full">MAIS POPULAR</div>
+                    </div>
+                    <h4 class="text-2xl font-bold mb-4 text-white">Trimestral</h4>
+                    <div class="text-5xl font-bold text-white mb-6">R$ 80,00<span class="text-lg opacity-80">/3 meses</span></div>
+                    <ul class="space-y-4 mb-8 text-white">
+                        <li class="flex items-center">
+                            <span class="mr-2">✓</span> +15.000 canais
+                        </li>
+                        <li class="flex items-center">
+                            <span class="mr-2">✓</span> Qualidade HD/Full HD/4K
+                        </li>
+                        <li class="flex items-center">
+                            <span class="mr-2">✓</span> 2 telas simultâneas
+                        </li>
+                        <li class="flex items-center">
+                            <span class="mr-2">✓</span> Suporte prioritário 24/7
+                        </li>
+                        <li class="flex items-center">
+                            <span class="mr-2">✓</span> Conteúdo ilimitado
+                        </li>
+                        <li class="flex items-center">
+                            <span class="mr-2">✓</span> Melhor custo-benefício
+                        </li>
+                    </ul>
+                    <button onclick="selectPlan('Trimestral - R$ 80,00')" class="w-full bg-black text-white py-3 rounded-lg font-bold hover:bg-gray-900 transition">
+                        Assinar Agora
+                    </button>
+                </div>
+
+                <!-- Plano Anual -->
+                <div class="bg-black border-2 border-gray-800 p-8 rounded-xl shadow-2xl hover:border-red-600 transition transform hover:scale-105">
+                    <h4 class="text-2xl font-bold mb-4 text-white">Anual</h4>
+                    <div class="text-5xl font-bold text-red-600 mb-6">R$ 150,00<span class="text-lg text-gray-400">/ano</span></div>
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-center text-gray-300">
+                            <span class="text-red-600 mr-2">✓</span> +15.000 canais
+                        </li>
+                        <li class="flex items-center text-gray-300">
+                            <span class="text-red-600 mr-2">✓</span> Qualidade HD/Full HD/4K
+                        </li>
+                        <li class="flex items-center text-gray-300">
+                            <span class="text-red-600 mr-2">✓</span> 3 telas simultâneas
+                        </li>
+                        <li class="flex items-center text-gray-300">
+                            <span class="text-red-600 mr-2">✓</span> Suporte VIP 24/7
+                        </li>
+                        <li class="flex items-center text-gray-300">
+                            <span class="text-red-600 mr-2">✓</span> Conteúdo ilimitado
+                        </li>
+                        <li class="flex items-center text-gray-300">
+                            <span class="text-red-600 mr-2">✓</span> Maior economia
+                        </li>
+                    </ul>
+                    <button onclick="selectPlan('Anual - R$ 150,00')" class="w-full gradient-red text-white py-3 rounded-lg font-bold hover:shadow-2xl transition">
+                        Assinar Agora
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-20 px-4 bg-black">
+        <div class="container mx-auto">
+            <h3 class="text-4xl md:text-5xl font-bold text-center mb-4 text-white">Depoimentos <span class="text-red-600">Reais</span></h3>
+            <div class="accent-line max-w-md mx-auto mb-16"></div>
+            <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <div class="bg-gray-900 border border-gray-800 p-6 rounded-xl hover:border-red-600 transition">
+                    <div class="text-yellow-400 text-2xl mb-4">⭐⭐⭐⭐⭐</div>
+                    <p class="text-gray-300 mb-4">"Melhor IPTV que já usei! Qualidade 4K impecável e sem travamentos. Atmos IPTV é show!"</p>
+                    <p class="font-bold text-white">- João Silva</p>
+                </div>
+                <div class="bg-gray-900 border border-gray-800 p-6 rounded-xl hover:border-red-600 transition">
+                    <div class="text-yellow-400 text-2xl mb-4">⭐⭐⭐⭐⭐</div>
+                    <p class="text-gray-300 mb-4">"Suporte rápido e eficiente. Preço justo e qualidade incomparável. Super recomendo!"</p>
+                    <p class="font-bold text-white">- Maria Santos</p>
+                </div>
+                <div class="bg-gray-900 border border-gray-800 p-6 rounded-xl hover:border-red-600 transition">
+                    <div class="text-yellow-400 text-2xl mb-4">⭐⭐⭐⭐⭐</div>
+                    <p class="text-gray-300 mb-4">"Funciona perfeitamente em todos os meus dispositivos. Melhor investimento que fiz!"</p>
+                    <p class="font-bold text-white">- Carlos Oliveira</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Final -->
+    <section class="gradient-bg text-white py-20 px-4 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute top-0 right-0 w-96 h-96 bg-red-600 rounded-full filter blur-3xl"></div>
+        </div>
+        <div class="container mx-auto text-center relative z-10">
+            <h3 class="text-4xl md:text-5xl font-bold mb-6">Pronto para começar?</h3>
+            <p class="text-xl mb-8 text-gray-300">Assine agora e tenha acesso imediato a todo conteúdo!</p>
+            <button onclick="openChat()" class="gradient-red px-12 py-4 rounded-lg font-bold text-xl hover:shadow-2xl transition transform hover:scale-105 pulse-glow">
+                Falar com Especialista
+            </button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black border-t border-gray-800 text-white py-8 px-4">
+        <div class="container mx-auto text-center">
+            <div class="mb-4">
+                <h4 class="text-2xl font-bold">ATMOS <span class="text-red-600">IPTV</span></h4>
+            </div>
+            <p class="mb-4 text-gray-400">© 2024 Atmos IPTV. Todos os direitos reservados.</p>
+            <div class="flex justify-center gap-6 text-gray-400">
+                <a href="#" class="hover:text-red-600 transition">Contato</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Chatbot -->
+    <div id="chatbot" class="fixed bottom-6 right-6 z-50" style="display: none;">
+        <div class="bg-gray-900 border-2 border-red-600 rounded-2xl shadow-2xl w-96 max-w-[calc(100vw-3rem)]">
+            <div class="gradient-red text-white p-4 rounded-t-2xl flex justify-between items-center">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center text-2xl">💬</div>
+                    <div>
+                        <h4 class="font-bold">Atmos IPTV</h4>
+                        <p class="text-sm opacity-90">Online agora</p>
+                    </div>
+                </div>
+                <button onclick="closeChat()" class="text-2xl hover:bg-white hover:bg-opacity-20 rounded-full w-8 h-8 flex items-center justify-center transition">×</button>
+            </div>
+            <div id="chatMessages" class="p-4 h-96 overflow-y-auto bg-black">
+                <div class="chat-bubble bg-gray-900 border border-gray-800 p-3 rounded-lg mb-3">
+                    <p class="text-white">Olá! 👋 Bem-vindo à <span class="text-red-600 font-bold">Atmos IPTV</span>!</p>
+                    <p class="text-gray-300 mt-2">Como posso ajudar você hoje?</p>
+                </div>
+            </div>
+            <div id="chatOptions" class="p-4 border-t border-gray-800 bg-black rounded-b-2xl">
+                <div class="space-y-2">
+                    <button onclick="showPlans()" class="w-full gradient-red text-white py-2 rounded-lg hover:shadow-lg transition text-sm font-semibold">
+                        💳 Ver planos e assinar
+                    </button>
+                    <button onclick="sendQuestionMessage('Tenho dúvidas')" class="w-full bg-gray-800 text-white py-2 rounded-lg hover:bg-gray-700 transition text-sm font-semibold">
+                        ❓ Tenho dúvidas
+                    </button>
+                    <button onclick="sendQuestionMessage('Suporte técnico')" class="w-full bg-gray-800 text-white py-2 rounded-lg hover:bg-gray-700 transition text-sm font-semibold">
+                        🔧 Suporte técnico
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating WhatsApp Button -->
+    <button onclick="openChat()" id="whatsappBtn" class="fixed bottom-6 right-6 bg-red-600 text-white w-16 h-16 rounded-full shadow-2xl hover:bg-red-700 transition transform hover:scale-110 flex items-center justify-center text-3xl z-40 pulse-glow">
+        💬
+    </button>
+
+    <script>
+        // Salvar visita
+        function saveVisit() {
+            const visits = parseInt(localStorage.getItem('atmosVisits') || '0');
+            localStorage.setItem('atmosVisits', (visits + 1).toString());
+            localStorage.setItem('atmosLastVisit', new Date().toISOString());
+        }
+
+        function scrollToPlans() {
+            document.getElementById('plans').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function openChat() {
+            document.getElementById('chatbot').style.display = 'block';
+            document.getElementById('whatsappBtn').style.display = 'none';
+            resetChat();
+        }
+
+        function closeChat() {
+            document.getElementById('chatbot').style.display = 'none';
+            document.getElementById('whatsappBtn').style.display = 'flex';
+        }
+
+        function resetChat() {
+            const chatMessages = document.getElementById('chatMessages');
+            chatMessages.innerHTML = `
+                <div class="chat-bubble bg-gray-900 border border-gray-800 p-3 rounded-lg mb-3">
+                    <p class="text-white">Olá! 👋 Bem-vindo à <span class="text-red-600 font-bold">Atmos IPTV</span>!</p>
+                    <p class="text-gray-300 mt-2">Como posso ajudar você hoje?</p>
+                </div>
+            `;
+            document.getElementById('chatOptions').innerHTML = `
+                <div class="space-y-2">
+                    <button onclick="showPlans()" class="w-full gradient-red text-white py-2 rounded-lg hover:shadow-lg transition text-sm font-semibold">
+                        💳 Ver planos e assinar
+                    </button>
+                    <button onclick="sendQuestionMessage('Tenho dúvidas')" class="w-full bg-gray-800 text-white py-2 rounded-lg hover:bg-gray-700 transition text-sm font-semibold">
+                        ❓ Tenho dúvidas
+                    </button>
+                    <button onclick="sendQuestionMessage('Suporte técnico')" class="w-full bg-gray-800 text-white py-2 rounded-lg hover:bg-gray-700 transition text-sm font-semibold">
+                        🔧 Suporte técnico
+                    </button>
+                </div>
+            `;
+        }
+
+        function showPlans() {
+            const chatMessages = document.getElementById('chatMessages');
+            
+            // Mensagem do usuário
+            const userMsg = document.createElement('div');
+            userMsg.className = 'chat-bubble gradient-red text-white p-3 rounded-lg mb-3 ml-auto';
+            userMsg.style.maxWidth = '80%';
+            userMsg.innerHTML = `<p>Quero ver os planos</p>`;
+            chatMessages.appendChild(userMsg);
+            
+            // Salvar interação
+            const interactions = JSON.parse(localStorage.getItem('atmosChatInteractions') || '[]');
+            interactions.push({ message: 'Ver planos', timestamp: new Date().toISOString() });
+            localStorage.setItem('atmosChatInteractions', JSON.stringify(interactions));
+            
+            // Resposta com os planos
+            setTimeout(() => {
+                const botMsg = document.createElement('div');
+                botMsg.className = 'chat-bubble bg-gray-900 border border-gray-800 p-3 rounded-lg mb-3';
+                botMsg.innerHTML = `
+                    <p class="text-white font-semibold mb-3">Escolha o plano ideal para você:</p>
+                    
+                    <div class="bg-black border border-gray-700 rounded-lg p-3 mb-2 hover:border-red-600 transition">
+                        <p class="text-red-600 font-bold text-lg">📺 Plano Mensal</p>
+                        <p class="text-white text-2xl font-bold">R$ 50,00<span class="text-sm text-gray-400">/mês</span></p>
+                        <p class="text-gray-400 text-sm">✓ +15.000 canais • 1 tela • HD/Full HD</p>
+                    </div>
+                    
+                    <div class="bg-black border-2 border-red-600 rounded-lg p-3 mb-2 relative">
+                        <div class="absolute -top-2 right-2 bg-yellow-400 text-black text-xs font-bold px-2 py-1 rounded">POPULAR</div>
+                        <p class="text-red-600 font-bold text-lg">📺 Plano Trimestral</p>
+                        <p class="text-white text-2xl font-bold">R$ 80,00<span class="text-sm text-gray-400">/3 meses</span></p>
+                        <p class="text-gray-400 text-sm">✓ +15.000 canais • 2 telas • HD/Full HD/4K</p>
+                    </div>
+                    
+                    <div class="bg-black border border-gray-700 rounded-lg p-3 hover:border-red-600 transition">
+                        <p class="text-red-600 font-bold text-lg">📺 Plano Anual</p>
+                        <p class="text-white text-2xl font-bold">R$ 150,00<span class="text-sm text-gray-400">/ano</span></p>
+                        <p class="text-gray-400 text-sm">✓ +15.000 canais • 3 telas • HD/Full HD/4K</p>
+                    </div>
+                    
+                    <p class="text-gray-300 text-sm mt-3">Selecione o plano abaixo:</p>
+                `;
+                chatMessages.appendChild(botMsg);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+                
+                // Atualizar botões
+                document.getElementById('chatOptions').innerHTML = `
+                    <div class="space-y-2">
+                        <button onclick="selectPlanFromChat('Mensal - R$ 50,00')" class="w-full gradient-red text-white py-2 rounded-lg hover:shadow-lg transition text-sm font-semibold">
+                            Contratar Plano Mensal
+                        </button>
+                        <button onclick="selectPlanFromChat('Trimestral - R$ 80,00')" class="w-full gradient-red text-white py-2 rounded-lg hover:shadow-lg transition text-sm font-semibold">
+                            Contratar Plano Trimestral ⭐
+                        </button>
+                        <button onclick="selectPlanFromChat('Anual - R$ 150,00')" class="w-full gradient-red text-white py-2 rounded-lg hover:shadow-lg transition text-sm font-semibold">
+                            Contratar Plano Anual
+                        </button>
+                        <button onclick="resetChat()" class="w-full bg-gray-800 text-white py-2 rounded-lg hover:bg-gray-700 transition text-sm font-semibold">
+                            ← Voltar ao menu
+                        </button>
+                    </div>
+                `;
+            }, 500);
+        }
+
+        function selectPlanFromChat(plan) {
+            const chatMessages = document.getElementById('chatMessages');
+            
+            // Mensagem do usuário
+            const userMsg = document.createElement('div');
+            userMsg.className = 'chat-bubble gradient-red text-white p-3 rounded-lg mb-3 ml-auto';
+            userMsg.style.maxWidth = '80%';
+            userMsg.innerHTML = `<p>Quero contratar: ${plan}</p>`;
+            chatMessages.appendChild(userMsg);
+            
+            // Salvar plano selecionado
+            localStorage.setItem('atmosSelectedPlan', `Gostaria de contratar o plano: ${plan}`);
+            
+            // Resposta final
+            setTimeout(() => {
+                const botMsg = document.createElement('div');
+                botMsg.className = 'chat-bubble bg-gray-900 border border-gray-800 p-3 rounded-lg mb-3';
+                botMsg.innerHTML = `
+                    <p class="text-white">Ótima escolha! 🎉</p>
+                    <p class="text-gray-300 mt-2">Vou te redirecionar para o WhatsApp para finalizar sua assinatura.</p>
+                `;
+                chatMessages.appendChild(botMsg);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+                
+                // Redireciona para WhatsApp
+                setTimeout(() => {
+                    const whatsappMsg = encodeURIComponent(`Olá! Gostaria de contratar o plano ${plan} da Atmos IPTV.`);
+                    window.open(`https://wa.me/5511954672965?text=${whatsappMsg}`, '_blank');
+                }, 2000);
+            }, 500);
+            
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function sendQuestionMessage(message) {
+            const chatMessages = document.getElementById('chatMessages');
+            
+            // Mensagem do usuário
+            const userMsg = document.createElement('div');
+            userMsg.className = 'chat-bubble gradient-red text-white p-3 rounded-lg mb-3 ml-auto';
+            userMsg.style.maxWidth = '80%';
+            userMsg.innerHTML = `<p>${message}</p>`;
+            chatMessages.appendChild(userMsg);
+            
+            // Salvar interação
+            const interactions = JSON.parse(localStorage.getItem('atmosChatInteractions') || '[]');
+            interactions.push({ message, timestamp: new Date().toISOString() });
+            localStorage.setItem('atmosChatInteractions', JSON.stringify(interactions));
+            
+            // Resposta automática
+            setTimeout(() => {
+                const botMsg = document.createElement('div');
+                botMsg.className = 'chat-bubble bg-gray-900 border border-gray-800 p-3 rounded-lg mb-3';
+                botMsg.innerHTML = `<p class="text-white">Vou te conectar com nossa equipe no WhatsApp para te ajudar! 🚀</p>`;
+                chatMessages.appendChild(botMsg);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+                
+                // Redireciona para WhatsApp
+                setTimeout(() => {
+                    const whatsappMsg = encodeURIComponent(`Olá! ${message} sobre a Atmos IPTV.`);
+                    window.open(`https://wa.me/5511954672965?text=${whatsappMsg}`, '_blank');
+                }, 2000);
+            }, 1000);
+            
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function selectPlan(plan) {
+            localStorage.setItem('atmosSelectedPlan', `Gostaria de assinar o plano: ${plan}`);
+            openChat();
+            setTimeout(() => {
+                sendMessage(`Quero o plano ${plan}`);
+            }, 500);
+        }
+
+        // Inicialização
+        saveVisit();
+
+        // Animações
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('slide-up');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
